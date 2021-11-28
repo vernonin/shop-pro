@@ -1,0 +1,44 @@
+
+.home-swiper swiper{
+  width: 750rpx;
+  height: 340rpx;
+}
+.home-swiper swiper image{
+  width: 100%;
+}
+.home-cate{
+  padding: 20rpx;
+  display: flex;
+}
+.home-cate navigator{
+  flex: 1;
+}
+.home-cate navigator image{
+  width: 100%;
+}
+
+.home-floor .floor-group .floor-title image{
+  width: 100%;
+}
+.home-floor .floor-group .floor-list{
+  /* 清除浮动 */
+  overflow: hidden; 
+}
+.home-floor .floor-group .floor-list navigator{
+  float: left;
+  width: 33.33%;
+}
+.floor-list navigator:nth-last-child(-n+4){
+  height: 27.727vw;
+  border-left: 10rpx solid #fff;
+}
+.floor-list navigator:nth-last-child(4){
+  border-bottom: 10rpx solid #fff;
+}
+.floor-list navigator:nth-last-child(3){
+  border-bottom: 10rpx solid #fff;
+}
+.home-floor .floor-group .floor-list navigator image{
+  width: 100%;
+  height: 100%;
+}

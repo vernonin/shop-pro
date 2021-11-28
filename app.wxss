@@ -20,3 +20,6 @@ page, view, text, swiper, swiper-item, image, navigator{
    /* 自定义统一的字体大小 */
    font-size: 28rpx;
  }
+ image {
+  width: 100%;
+ }

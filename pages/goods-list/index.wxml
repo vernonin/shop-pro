@@ -1,0 +1,10 @@
+<view class="goods-list">
+  <!-- 搜索框 -->
+  <SearchInput></SearchInput>
+  <Tabs tabs="{{tabs}}"
+        bindtabsItemChange="handleTabsItemChange">
+    <block wx:if="{{tabs[0].isActive}}">000</block>
+    <block wx:elif="{{tabs[1].isActive}}">111</block>
+    <block wx:elif="{{tabs[2].isActive}}">222</block>
+  </Tabs>
+</view>

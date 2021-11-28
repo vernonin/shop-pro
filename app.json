@@ -3,7 +3,9 @@
     "pages/index/index",
     "pages/category/index",
     "pages/cart/index",
-    "pages/user/index"
+    "pages/user/index",
+    "pages/search/index",
+    "pages/goods-list/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,7 +21,8 @@
     "selectedColor": "#ff2d4a",
     "position": "bottom",
     "borderStyle": "black",
-    "list": [{
+    "list": [
+      {
         "pagePath": "pages/index/index",
         "text": "首页",
         "iconPath": "/icons/home.png",
@@ -42,6 +45,7 @@
         "text": "我的",
         "iconPath": "/icons/my.png",
         "selectedIconPath": "/icons/my-o.png"
-      }]
+      }
+    ]
   }
 }
