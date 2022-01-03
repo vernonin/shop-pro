@@ -5,7 +5,8 @@
     "pages/cart/index",
     "pages/user/index",
     "pages/search/index",
-    "pages/goods-list/index"
+    "pages/goods-list/index",
+    "pages/goods-detail/index"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -15,7 +16,6 @@
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
-  "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "color": "#999",
     "selectedColor": "#ff2d4a",

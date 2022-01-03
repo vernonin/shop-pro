@@ -34,7 +34,6 @@ Page({
   // 总页数
   totalPages: 1,
   onLoad: function (options) {
-    console.log(options);
     this.QueryParams.cid = options.cid
     this.getGoodsListData()
   },

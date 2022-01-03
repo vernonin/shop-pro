@@ -1,66 +1,114 @@
-// pages/cart/index.js
+
+import {
+  getSetting,
+  chooseAddress,
+  openSetting} from '../../utils/asyncWx.js'
 Page({
 
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    address: {},
+    cart: [],
+    allChecked: false,
+    totalPrice: 0,
+    totalNum: 0
   },
-
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad: function (options) {
-
+  onShow() {
+    this.computedCart()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
+  computedCart() {
+    let address = wx.getStorageSync('address')
+    // 获取缓存中的购物车数据
+    const cart = wx.getStorageSync('cart') || []
+    // 计算全选
+    // const allChecked = cart.length ? cart.every(v => v.checked) : false
+    let allChecked = true;
+    let totalPrice = 0;
+    let totalNum = 0;
+    cart.forEach(v => {
+      if(v.checked) {
+        totalPrice += v.num * v.goods_price
+        totalNum += v.num
+      } else {
+        allChecked = false
+      }
+    })
+    allChecked = cart.length !== 0 ? allChecked : false
+    this.setData({address, cart, allChecked, totalPrice, totalNum})
   },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+  // 点击收货地址按钮
+  async handleChooseAddress() {
+    try{
+      const res1 = await getSetting();
+      const scopeAddress = res1.authSetting['scope.address']
+      // 判断权限状态
+      if(!scopeAddress) {
+        await openSetting()
+      }
+      const address = await chooseAddress()
+      address.all = address.provinceName + address.cityName + address.countyName + address.detailInfo
+      wx.setStorageSync('address', address)
+    } catch (error) {
+      console.log(error)
+    }
   },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide: function () {
-
+  handleItemChange(e) {
+    const goodsId = e.currentTarget.dataset.id
+    let {cart} = this.data
+    let index = cart.findIndex(v => v.goods_id === goodsId)
+    cart[index].checked = !cart[index].checked
+    this.setData({cart})
+    wx.setStorageSync('cart', cart)
+    this.computedCart()
   },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload: function () {
-
+  handleAllCheck(e) {
+    const {allChecked, cart} = this.data
+    if(allChecked) {
+      cart.forEach(v => {
+        v.checked = false
+      })
+    } else {
+      cart.forEach(v => {
+        v.checked = true
+      })
+    }
+    this.setData({
+      cart,
+      allChecked: !allChecked
+    })
+    wx.setStorageSync('cart', cart)
+    this.computedCart()
   },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh: function () {
-
+  handleAddGoods(e) {
+    const goodsId = e.currentTarget.dataset.id
+    let {cart} = this.data
+    let index = cart.findIndex(v => v.goods_id === goodsId)
+    cart[index].num ++;
+    this.setData({cart})
+    wx.setStorageSync('cart', cart)
+    this.computedCart()
   },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
-  onReachBottom: function () {
-
-  },
-
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage: function () {
-
+  handleReduceGoods(e) {
+    const goodsId = e.currentTarget.dataset.id
+    let {cart} = this.data
+    let index = cart.findIndex(v => v.goods_id === goodsId)
+    cart[index].num --;
+    if(cart[index].num === 0) {
+      wx.showModal({
+        title: '是否要删除该商品？',
+        success: (res) => {
+          if(res.confirm) {
+            cart.splice(index, 1)
+          } else {
+            cart[index].num = 1
+          }
+          this.setData({cart})
+          wx.setStorageSync('cart', cart)
+          this.computedCart()
+        }
+      })
+    }
+    this.setData({cart})
+    wx.setStorageSync('cart', cart)
+    this.computedCart()
   }
 })

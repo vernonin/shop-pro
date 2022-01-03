@@ -1,1 +1,123 @@
-/* pages/cart/index.wxss */
+page{
+  padding-bottom: 100rpx;
+}
+.address_btn{
+  padding: 20rpx;
+}
+.revice_address_row{
+  padding: 10rpx 20rpx;
+  background-color: #eee;
+}
+.user_info{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10rpx;
+}
+.user_info .consignee{
+  font-size: 34rpx;
+  font-weight: bolder;
+}
+.user_address{
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: #333;
+}
+.cart_content .cart_title{
+  padding: 20rpx 25rpx;
+  border-top: 1rpx solid var(--themeColor);
+  border-bottom: 1rpx solid var(--themeColor);
+  font-size: 48rpx;
+}
+
+.cart_main .cart_item{
+  display: flex;
+  padding: 10rpx;
+  justify-content: space-around;
+  border-bottom: 1rpx solid #999;
+}
+.cart_chk_wrap{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 20rpx;
+}
+.cart_main .cart_item .cart_img_wrap image{
+  flex: 3;
+  width: 200rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cart_info_wrap{
+  flex: 4;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.cart_info_wrap .goods_name{
+  color: #666;
+}
+.cart_info_wrap .goods_price_wrap{
+  display: flex;
+  justify-content: space-between;
+}
+.goods_price{
+  color: var(--themeColor);
+  color: 36rpx;
+}
+.cart_info_wrap .goods_price_wrap .cart_mun_tool{
+  display: flex;
+  align-items: center;
+}
+.goods_num{
+  margin: 0 15rpx;
+}
+.mun_edit{
+  font-size: 32rpx;
+  border: 2rpx solid #eee;
+  padding: 5rpx 12rpx;
+}
+
+/* 底部样式 */
+.footer_tool{
+  position: fixed;
+  left: 0;
+  bottom: 0rpx;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border-top: 1rpx solid #eee;
+  height: 124rpx;
+  background-color: #fff;
+  z-index: 99;
+}
+.all_chk_wrap{
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.total_price_wrap{
+  flex: 4;
+  text-align: right;
+  margin-right: 5rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.total_price_wrap .total_price_text{
+  color: var(--themeColor);
+  font-size: 34rpx;
+}
+.order_pay_warp{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 3;
+  padding: 10rpx;
+  font-size: 42rpx;
+  color: #fff;
+  background-color: var(--themeColor);
+}
