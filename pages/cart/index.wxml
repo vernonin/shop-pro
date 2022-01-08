@@ -17,33 +17,46 @@
 <view class="cart_content">
   <view class="cart_title">购物车</view>
   <view class="cart_main">
-    <view
-      class="cart_item"
-      wx:for="{{cart}}"
-      wx:key="goods_id">
-      <!-- 复选框 -->
-      <view class="cart_chk_wrap">
-        <checkbox-group data-id="{{item.goods_id}}" bindtap="handleItemChange">
-          <checkbox checked="{{item.checked}}"></checkbox>
-        </checkbox-group>
-      </view>
-      <!-- 图片 -->
-      <navigator class="cart_img_wrap">
-        <image mode="widthFix" src="{{item.goods_small_logo}}"></image>
-      </navigator>
-      <!-- 商品信息 -->
-      <view class="cart_info_wrap"> 
-        <view class="goods_name">{{item.goods_name}}</view>
-        <view class="goods_price_wrap">
-          <view class="goods_price">￥{{item.goods_price}}</view>
-          <view class="cart_mun_tool">
-            <view class="mun_edit" data-id="{{item.goods_id}}" bindtap="handleReduceGoods">-</view>
-            <view class="goods_num">{{item.num}}</view>
-            <view class="mun_edit" data-id="{{item.goods_id}}" bindtap="handleAddGoods">+</view>
+    <block wx:if="{{cart.length !== 0}}">
+      <view
+        class="cart_item"
+        wx:for="{{cart}}"
+        wx:key="goods_id">
+        <!-- 复选框 -->
+        <view class="cart_chk_wrap">
+          <checkbox-group data-id="{{item.goods_id}}" bindtap="handleItemChange">
+            <checkbox checked="{{item.checked}}"></checkbox>
+          </checkbox-group>
+        </view>
+        <!-- 图片 -->
+        <navigator class="cart_img_wrap">
+          <image mode="widthFix" src="{{item.goods_small_logo}}"></image>
+        </navigator>
+        <!-- 商品信息 -->
+        <view class="cart_info_wrap"> 
+          <view class="goods_name">{{item.goods_name}}</view>
+          <view class="goods_price_wrap">
+            <view class="goods_price">￥{{item.goods_price}}</view>
+            <view class="cart_mun_tool">
+              <view class="mun_edit" data-id="{{item.goods_id}}" bindtap="handleReduceGoods">-</view>
+              <view class="goods_num">{{item.num}}</view>
+              <view class="mun_edit" data-id="{{item.goods_id}}" bindtap="handleAddGoods">+</view>
+            </view>
           </view>
         </view>
       </view>
-    </view>
+    </block>
+    <block wx:else>
+      <view class="empty-cart">
+        <image mode="widthFix" src="../../icons/empty-cart.jpg"></image>
+        <view class="text">还是空的，去挑选自己喜欢的商品吧~</view>
+        <button
+          type="primary"
+          size="mini"
+          bindtap="handleToCategory"
+        >去看看</button>
+      </view>
+    </block>
   </view>
   <!--  -->
 </view>
@@ -61,5 +74,5 @@
     </view>
     <view>包含运费</view>
   </view>
-  <view class="order_pay_warp">结算({{totalNum}})</view>
+  <view class="order_pay_warp" bindtap="handleSettlement">结算({{totalNum}})</view>
 </view>

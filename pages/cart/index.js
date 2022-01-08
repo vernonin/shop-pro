@@ -110,5 +110,30 @@ Page({
     this.setData({cart})
     wx.setStorageSync('cart', cart)
     this.computedCart()
+  },
+  handleToCategory() {
+    wx.switchTab({
+      url: '/pages/category/index',
+    })
+  },
+  handleSettlement() {
+    const {address, totalNum} = this.data
+    if(!address.userName) {
+      wx.showToast({
+        title: '您还没有填写收货地址',
+        icon: 'error'
+      })
+      return;
+    }
+    if(totalNum === 0) {
+        wx.showToast({
+          title: '您还没有选购商品',
+          icon: 'error'
+        })
+        return;
+    }
+    wx.navigateTo({
+      url: '/pages/pay/index',
+    })
   }
 })

@@ -1,9 +1,6 @@
 page{
   padding-bottom: 100rpx;
 }
-.address_btn{
-  padding: 20rpx;
-}
 .revice_address_row{
   padding: 10rpx 20rpx;
   background-color: #eee;
@@ -74,11 +71,7 @@ page{
 .goods_num{
   margin: 0 15rpx;
 }
-.mun_edit{
-  font-size: 32rpx;
-  border: 2rpx solid #eee;
-  padding: 5rpx 12rpx;
-}
+
 
 /* 底部样式 */
 .footer_tool{
@@ -92,12 +85,6 @@ page{
   height: 124rpx;
   background-color: #fff;
   z-index: 99;
-}
-.all_chk_wrap{
-  flex: 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 .total_price_wrap{
   flex: 4;
@@ -120,17 +107,4 @@ page{
   font-size: 42rpx;
   color: #fff;
   background-color: var(--themeColor);
-}
-.empty-cart{
-  margin: 150rpx;
-  text-align: center;
-}
-.empty-cart image {
-  width: 60%;
-}
-.empty-cart .text {
-  color: #333;
-}
-.empty-cart button {
-  margin-top: 20rpx;
 }

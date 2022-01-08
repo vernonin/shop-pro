@@ -32,3 +32,6 @@
 .icon-shoucang1:before {
   content: "\e8c6";
 }
+.empty-cart{
+  text-align: center;
+}
